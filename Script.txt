@@ -1,0 +1,32 @@
+local Event = game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].net.out._NetManaged.BedwarsPurchaseItem
+Event:InvokeServer(
+    {
+        shopItem = {
+            currency = "iron",
+            itemType = "wood_scythe",
+            amount = 16,
+            price = 8,
+            disabledInQueue = {
+                "mine_wars"
+            },
+            category = "Blocks"
+        },
+        shopId = "1_item_shop"
+    }
+)
+task.wait(3)
+
+local Event = game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].net.out._NetManaged.SwordChargeState
+Event:FireServer(
+    {
+        itemType = "wood_scythe",
+        chargeState = "CHARGED"
+    }
+)
+
+local Event = game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].net.out._NetManaged.ScytheDash
+Event:FireServer(
+    {
+        direction = Vector3.new(9e9,9e9,9e9)
+    }
+)
